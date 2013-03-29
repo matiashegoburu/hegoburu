@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hegoburu.Presentation.Core.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hegoburu.DAL.Core", "Hegoburu.DAL.Core\Hegoburu.DAL.Core.csproj", "{4519E90B-D889-4D14-A5B0-948822DA8980}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hegoburu.DAL.Core.NHibernate", "Hegoburu.DAL.Core.NHibernate\Hegoburu.DAL.Core.NHibernate.csproj", "{7DB10351-EBD3-4508-AE90-B3F6A9508AEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{73E598DE-DF82-4197-8B53-7348284F6052}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73E598DE-DF82-4197-8B53-7348284F6052}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73E598DE-DF82-4197-8B53-7348284F6052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DB10351-EBD3-4508-AE90-B3F6A9508AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB10351-EBD3-4508-AE90-B3F6A9508AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB10351-EBD3-4508-AE90-B3F6A9508AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB10351-EBD3-4508-AE90-B3F6A9508AEA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
