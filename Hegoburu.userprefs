@@ -1,6 +1,6 @@
-﻿<Properties>
+﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/MainWidgetController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/gtk-gui/Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.MainWidgetView.cs">
     <Files>
       <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaListWidgetView.cs" Line="55" Column="25" />
       <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaListWidgetController.cs" Line="35" Column="19" />
@@ -14,11 +14,13 @@
       <File FileName="Hegoburu.Presentation.Desktop.Core/Model.cs" Line="110" Column="17" />
       <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWindow.cs" Line="44" Column="3" />
       <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/MainWidgetView.cs" Line="25" Column="25" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/gtk-gui/Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.MainWidgetView.cs" Line="9" Column="3" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/gtk-gui/Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.MainWidgetView.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
+          <Node name="Hegoburu.PResentation.Core.Desktop.Gtk.Demo" expanded="True" />
+          <Node name="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI" selected="True" />
           <Node name="Hegoburu.Presentation.Desktop.Core" expanded="True" />
           <Node name="Hegoburu.Presentation.Desktop.Core.Gtk" expanded="True" />
         </State>
