@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Hegoburu.Presentation.Core.Desktop.Gtk.Demo
+Exec=hegoburu.presentation.core.desktop.gtk.demo
+Terminal=false

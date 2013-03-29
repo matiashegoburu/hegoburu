@@ -1,0 +1,43 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/MainWidgetController.cs">
+    <Files>
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaListWidgetView.cs" Line="55" Column="25" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaListWidgetController.cs" Line="35" Column="19" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaEditorWidgetController.cs" Line="10" Column="44" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/MainWidgetController.cs" Line="29" Column="24" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelList.cs" Line="55" Column="22" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWidget.cs" Line="11" Column="29" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaEditorWidgetView.cs" Line="21" Column="1" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelManager.cs" Line="15" Column="4" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/PersonaListModel.cs" Line="22" Column="24" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/Model.cs" Line="110" Column="17" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWindow.cs" Line="44" Column="3" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/MainWidgetView.cs" Line="25" Column="25" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/gtk-gui/Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.MainWidgetView.cs" Line="9" Column="3" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Hegoburu.Presentation.Desktop.Core" expanded="True" />
+          <Node name="Hegoburu.Presentation.Desktop.Core.Gtk" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>View.AllChildren</Value>
+        </State>
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

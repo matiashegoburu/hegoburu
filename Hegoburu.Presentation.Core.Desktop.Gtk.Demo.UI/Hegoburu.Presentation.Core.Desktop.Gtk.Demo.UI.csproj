@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D33F761-963C-4FCC-B920-78B11529E024}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI</RootNamespace>
+    <AssemblyName>Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glade-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Models\TelefonoModel.cs" />
+    <Compile Include="DAL.Repository\PersonaRepository.cs" />
+    <Compile Include="Models\PersonaModel.cs" />
+    <Compile Include="Views\Persona\PersonaListWidgetView.cs" />
+    <Compile Include="Controllers\PersonaListWidgetController.cs" />
+    <Compile Include="gtk-gui\Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.Persona.PersonaListWidgetView.cs" />
+    <Compile Include="Models\PersonaListModel.cs" />
+    <Compile Include="Views\Persona\PersonaEditorWidgetView.cs" />
+    <Compile Include="gtk-gui\Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.Persona.PersonaEditorWidgetView.cs" />
+    <Compile Include="Controllers\PersonaEditorWidgetController.cs" />
+    <Compile Include="Views\MainWidgetView.cs" />
+    <Compile Include="gtk-gui\Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.MainWidgetView.cs" />
+    <Compile Include="Models\MainModel.cs" />
+    <Compile Include="Controllers\MainWidgetController.cs" />
+    <Compile Include="DAL.Entities\PersonaEntity.cs" />
+    <Compile Include="DAL.Entities\TelefonoEntity.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="app.desktop">
+      <DeployService-TargetDirectoryId>Linux.DesktopApplications</DeployService-TargetDirectoryId>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hegoburu.Presentation.Desktop.Core.Gtk\Hegoburu.Presentation.Desktop.Core.Gtk.csproj">
+      <Project>{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}</Project>
+      <Name>Hegoburu.Presentation.Desktop.Core.Gtk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hegoburu.Presentation.Desktop.Core\Hegoburu.Presentation.Desktop.Core.csproj">
+      <Project>{DCFAE4B2-FBBE-4DBB-A159-3B08BB84F213}</Project>
+      <Name>Hegoburu.Presentation.Desktop.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="DAL.Entities\" />
+    <Folder Include="DAL.Repository\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Persona\" />
+  </ItemGroup>
+</Project>

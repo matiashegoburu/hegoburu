@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hegoburu.Contabilidad.Core", "Hegoburu.Contabilidad.Core\Hegoburu.Contabilidad.Core.csproj", "{73E598DE-DF82-4197-8B53-7348284F6052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hegoburu.Presentation.Desktop.Core", "Hegoburu.Presentation.Desktop.Core\Hegoburu.Presentation.Desktop.Core.csproj", "{DCFAE4B2-FBBE-4DBB-A159-3B08BB84F213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hegoburu.Presentation.Desktop.Core.Gtk", "Hegoburu.Presentation.Desktop.Core.Gtk\Hegoburu.Presentation.Desktop.Core.Gtk.csproj", "{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hegoburu.PResentation.Core.Desktop.Gtk.Demo", "Hegoburu.PResentation.Core.Desktop.Gtk.Demo\Hegoburu.PResentation.Core.Desktop.Gtk.Demo.csproj", "{F06FB2F0-6D1D-4169-9B1A-26057F859F34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI", "Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI\Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.csproj", "{3D33F761-963C-4FCC-B920-78B11529E024}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D33F761-963C-4FCC-B920-78B11529E024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D33F761-963C-4FCC-B920-78B11529E024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D33F761-963C-4FCC-B920-78B11529E024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D33F761-963C-4FCC-B920-78B11529E024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73E598DE-DF82-4197-8B53-7348284F6052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E598DE-DF82-4197-8B53-7348284F6052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E598DE-DF82-4197-8B53-7348284F6052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E598DE-DF82-4197-8B53-7348284F6052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DA076E-D679-4B3E-83CA-49FF1EEB1A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCFAE4B2-FBBE-4DBB-A159-3B08BB84F213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCFAE4B2-FBBE-4DBB-A159-3B08BB84F213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCFAE4B2-FBBE-4DBB-A159-3B08BB84F213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCFAE4B2-FBBE-4DBB-A159-3B08BB84F213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06FB2F0-6D1D-4169-9B1A-26057F859F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06FB2F0-6D1D-4169-9B1A-26057F859F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06FB2F0-6D1D-4169-9B1A-26057F859F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06FB2F0-6D1D-4169-9B1A-26057F859F34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Hegoburu.PResentation.Core.Desktop.Gtk.Demo\Hegoburu.PResentation.Core.Desktop.Gtk.Demo.csproj
+	EndGlobalSection
+EndGlobal
