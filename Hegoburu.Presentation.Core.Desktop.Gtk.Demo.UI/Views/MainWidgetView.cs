@@ -23,6 +23,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views
 			hpaned1.Add1 (personaListView);
 
 			personaListView.Controller.AgregarClicked += Controller.HandleAgregarClicked;
+			personaListView.Controller.EditarClicked += Controller.HandleEditarClicked;
 		}
 
 		protected override void HandlePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)

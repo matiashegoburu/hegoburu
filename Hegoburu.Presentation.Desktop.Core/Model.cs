@@ -9,10 +9,10 @@ namespace Hegoburu.Presentation.Desktop.Core
 	public class Model<TItem> : IModel<TItem>
 	{
 		#region INotifyPropertyChanged implementation
-		public event PropertyChangedEventHandler PropertyChanged;
+		public virtual event PropertyChangedEventHandler PropertyChanged;
 		#endregion
 
-		public event DeletingEventHandler Deleting;
+		public virtual event DeletingEventHandler Deleting;
 
 		TItem _item;
 
@@ -50,9 +50,13 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 			var modelProxy = new Proxy<TModel> ()
 				.Target (model)
-				.Implement<IModel<TItem>> ()
+			//.Implement<IModel<TItem>> ()
 				.InterceptAllSetters ()
-					.OnBefore (mi => Console.WriteLine (mi.Method.Name + " Intercepted!"))
+					.OnInvoke (mi => {
+				Console.WriteLine (mi.Method.Name + " Intercepted!" + mi.Arguments.First ());
+				mi.Method.Invoke (mi.Target, mi.Arguments);
+			}
+			)
 				.Save ();
 
 			return modelProxy;
@@ -68,9 +72,13 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 			var modelProxy = new Proxy<TModel> ()
 				.Target (model)
-				.Implement<IModel<TItem>> ()
+			//.Implement<IModel<TItem>> ()
 				.InterceptAllSetters ()
-					.OnBefore (mi => Console.WriteLine (mi.Method.Name + " Intercepted!"))
+					.OnInvoke (mi => {
+				Console.WriteLine (mi.Method.Name + " Intercepted!" + mi.Arguments.First ());
+				mi.Method.Invoke (mi.Target, mi.Arguments);
+			}
+			)
 
 					.Save ();
 

@@ -59,5 +59,10 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.Persona
 		{
 			Controller.Agregar ();
 		}
+		protected void OnBtnEditarClicked (object sender, EventArgs e)
+		{
+			Controller.Editar ();
+		}
+
 	}
 }

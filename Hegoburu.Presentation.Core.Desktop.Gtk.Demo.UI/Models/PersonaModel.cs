@@ -31,6 +31,9 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 				return Item.DNI;
 			}
 			set {
+				if (Item.DNI == value)
+					return;
+
 				Item.DNI = value;
 				OnPropertyChanged ("DNI");
 			}
@@ -41,6 +44,9 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 				return Item.Nombre;
 			}
 			set {
+				if (Item.Nombre == value)
+					return;
+
 				Item.Nombre = value;
 				OnPropertyChanged ("Nombre");
 			}
@@ -51,6 +57,9 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 				return Item.Apellido;
 			}
 			set {
+				if (Item.Apellido == value)
+					return;
+
 				Item.Apellido = value;
 				OnPropertyChanged ("Apellido");
 			}

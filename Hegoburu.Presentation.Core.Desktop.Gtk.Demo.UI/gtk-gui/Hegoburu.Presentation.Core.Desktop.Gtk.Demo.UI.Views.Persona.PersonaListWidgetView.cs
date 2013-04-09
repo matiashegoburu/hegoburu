@@ -71,6 +71,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.Persona
 			}
 			this.Hide ();
 			this.btnAgregar.Clicked += new global::System.EventHandler (this.OnBtnAgregarClicked);
+			this.btnEditar.Clicked += new global::System.EventHandler (this.OnBtnEditarClicked);
 		}
 	}
 }

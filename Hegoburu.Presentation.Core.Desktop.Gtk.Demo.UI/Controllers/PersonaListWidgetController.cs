@@ -10,10 +10,17 @@ using System.Collections.Generic;
 
 namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Controllers
 {
+	public class EditarEventArgs : EventArgs
+	{
+		public int Id { get; set; }
+	}
+
 	public class PersonaListWidgetController 
 		: Controller<PersonaListWidgetView, PersonaListModel, List<PersonaEntity>, PersonaListWidgetController>
 	{
 		public event EventHandler<EventArgs> AgregarClicked;
+
+		public event EventHandler<EditarEventArgs> EditarClicked;
 
 		private PersonaRepository _personaRepository;
 
@@ -21,6 +28,12 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Controllers
 			: base(view, model)
 		{
 			_personaRepository = new PersonaRepository ();
+			model.Personas.ItemChanged += HandleItemChanged;
+		}
+
+		void HandleItemChanged (object sender, ItemChangedEventArgs e)
+		{
+			Refrescar ();
 		}
 
 		public void Agregar ()
@@ -40,11 +53,24 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Controllers
 			ivwPersonas.SelectionMode = global::Gtk.SelectionMode.Single;
 		}
 
+		public void Editar ()
+		{
+			var ivwPersonas = View.AllChildren.OfType<global::Gtk.VPaned> ().First ().Child1 as global::Gtk.IconView;
+			var path = ivwPersonas.SelectedItems.First ();
+			var store = ivwPersonas.Model as  global::Gtk.ListStore;
+
+			global::Gtk.TreeIter iter;
+			store.GetIter (out iter, path);
+			var id = (int)store.GetValue (iter, 0);
+			if (EditarClicked != null)
+				EditarClicked (this, new EditarEventArgs{Id = id});
+		}
+
 		public void Refrescar ()
 		{
-			Model.Personas.Clear ();
-			var personas = _personaRepository.Get ();
-			personas.ForEach (p => Model.Personas.Add (ModelManager.GetInstance ().Get<PersonaModel, PersonaEntity> (p)));
+//			Model.Personas.Clear ();
+//			var personas = _personaRepository.Get ();
+//			personas.ForEach (p => Model.Personas.Add (ModelManager.GetInstance ().Get<PersonaModel, PersonaEntity> (p)));
 
 			Cargar ();
 

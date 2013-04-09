@@ -4,6 +4,7 @@ using Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models;
 using Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.DAL.Entities;
 using Hegoburu.Presentation.Desktop.Core;
 using Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.DAL.Repository;
+using System.Linq;
 
 namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Controllers
 {
@@ -22,6 +23,9 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Controllers
 
 		public void Agregar ()
 		{
+			if (_personaRepository.Get ().Any (p => p.DNI == Model.Item.DNI))
+				return;
+
 			_personaRepository.Save (Model.Item);
 
 			if (PersonaAgregada != null)
