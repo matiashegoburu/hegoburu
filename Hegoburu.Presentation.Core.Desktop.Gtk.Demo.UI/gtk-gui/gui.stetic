@@ -146,7 +146,7 @@
             <property name="CanFocus">True</property>
             <property name="IsEditable">True</property>
             <property name="InvisibleChar">•</property>
-            <signal name="WidgetRemoved" handler="OnTxtApellidoWidgetRemoved" />
+            <signal name="EditingDone" handler="OnTxtApellidoEditingDone" />
           </widget>
           <packing>
             <property name="X">124</property>
@@ -185,13 +185,6 @@
           <placeholder />
         </child>
       </widget>
-    </child>
-  </widget>
-  <widget class="Gtk.Bin" id="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.Persona.lala" design-size="300 300">
-    <property name="MemberName" />
-    <property name="Visible">False</property>
-    <child>
-      <placeholder />
     </child>
   </widget>
 </stetic-interface>

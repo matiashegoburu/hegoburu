@@ -29,7 +29,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Controllers
 				viewToRemove.Destroy ();
 			}
 
-			var personaEditorModel = ModelManager.GetInstance ().Get<PersonaModel, PersonaEntity> ();
+			var personaEditorModel = ModelManager.GetInstance ().Get<PersonaModel, PersonaEntity> (new PersonaEntity ());
 			var personaEditorView = ViewManager.GetInstance ().Get<PersonaModel, PersonaEntity, PersonaEditorWidgetController, PersonaEditorWidgetView> (personaEditorModel);
 			personaEditorView.Controller.PersonaAgregada += HandlePersonaAgregada;
 

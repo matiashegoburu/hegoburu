@@ -8,13 +8,19 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 {
 	public class PersonaListModel : Model<List<PersonaEntity>>
 	{
-		public PersonaListModel (List<PersonaEntity> item) 
-			: base(item, (i1, i2) => true)
+		protected override void Initialize (List<PersonaEntity> item)
 		{
+			base.Initialize (item);
 			Personas = new ModelList<PersonaModel, PersonaEntity> (item);
 		}
 
-		public ModelList<PersonaModel, PersonaEntity> Personas { get; set; } 
+		protected override Func<List<PersonaEntity>, List<PersonaEntity>, bool> IsSameItem {
+			get {
+				return (i1, i2) => true;
+			}
+		}
+
+		public virtual ModelList<PersonaModel, PersonaEntity> Personas { get; set; } 
 
 		public override void Dispose ()
 		{

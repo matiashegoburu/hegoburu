@@ -31,6 +31,12 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="FluentAop">
+      <HintPath>..\lib\fluentAOP\FluentAop.dll</HintPath>
+    </Reference>
+    <Reference Include="Proxi">
+      <HintPath>..\lib\fluentAOP\Proxi.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -41,6 +47,7 @@
     <Compile Include="DeletingEventHandler.cs" />
     <Compile Include="ViewManager.cs" />
     <Compile Include="ModelList.cs" />
+    <Compile Include="IModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

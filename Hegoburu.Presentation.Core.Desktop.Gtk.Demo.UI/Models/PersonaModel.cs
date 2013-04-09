@@ -9,13 +9,24 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 {
 	public class PersonaModel : Model<PersonaEntity>
 	{
-		public PersonaModel (PersonaEntity item) 
-			: base(item, (p1, p2) => p1.DNI == p2.DNI)
+		public PersonaModel ()
 		{
+
+		}
+
+		protected override void Initialize (PersonaEntity item)
+		{
+			base.Initialize (item);
 			Telefonos = new ModelList<TelefonoModel, TelefonoEntity> (item.Telefonos);
 		}
 
-		public int DNI {
+		protected override Func<PersonaEntity, PersonaEntity, bool> IsSameItem {
+			get {
+				return (p1, p2) => p1.DNI == p2.DNI;
+			}
+		}
+
+		public virtual int DNI {
 			get {
 				return Item.DNI;
 			}
@@ -25,7 +36,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 			}
 		}
 
-		public string Nombre {
+		public virtual string Nombre {
 			get {
 				return Item.Nombre;
 			}
@@ -35,7 +46,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 			}
 		}
 
-		public string Apellido {
+		public virtual string Apellido {
 			get {
 				return Item.Apellido;
 			}
@@ -46,7 +57,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 		}
 
 		ModelList<TelefonoModel, TelefonoEntity> _telefonos;
-		public ModelList<TelefonoModel, TelefonoEntity> Telefonos {
+		public virtual ModelList<TelefonoModel, TelefonoEntity> Telefonos {
 			get {
 				return _telefonos;
 			}

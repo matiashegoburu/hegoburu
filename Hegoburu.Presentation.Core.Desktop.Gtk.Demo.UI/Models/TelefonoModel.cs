@@ -6,12 +6,17 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 {
 	public class TelefonoModel : Model<TelefonoEntity>
 	{
-		public TelefonoModel (TelefonoEntity item) 
-			: base(item, (t1, t2) => t1.ToString() == t2.ToString())
+		public TelefonoModel ()
 		{
 		}
 
-		public int Pais {
+		protected override Func<TelefonoEntity, TelefonoEntity, bool> IsSameItem {
+			get {
+				return (t1, t2) => t1.ToString () == t2.ToString ();
+			}
+		}
+
+		public virtual int Pais {
 			get {
 				return Item.Pais;
 			}
@@ -21,7 +26,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 			}
 		}
 
-		public int Area {
+		public virtual int Area {
 			get {
 				return Item.Area;
 			}
@@ -31,7 +36,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 			}
 		}
 
-		public int Numero {
+		public virtual int Numero {
 			get {
 				return Item.Numero;
 			}

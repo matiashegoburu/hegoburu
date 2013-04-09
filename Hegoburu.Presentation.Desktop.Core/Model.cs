@@ -1,12 +1,12 @@
 using System;
 using System.ComponentModel;
 using System.Linq;
+using FluentAop;
+using Proxi;
 
 namespace Hegoburu.Presentation.Desktop.Core
 {
-	public class Model<TItem> 
-		: INotifyPropertyChanged
-		, IDisposable
+	public class Model<TItem> : IModel<TItem>
 	{
 		#region INotifyPropertyChanged implementation
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -16,7 +16,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 		TItem _item;
 
-		public TItem Item {
+		public virtual TItem Item {
 			get {
 				return _item;
 			}
@@ -27,24 +27,35 @@ namespace Hegoburu.Presentation.Desktop.Core
 			}
 		}
 
-		protected Func<TItem, TItem, bool> _isSameItem;
-
-		internal protected Model (TItem item) : this(item, (i1, i2) => i1.Equals(i2))
-		{
+		protected virtual Func<TItem, TItem, bool> IsSameItem { 
+			get {
+				return (i1, i2) => i1.Equals (i2);
+			}
 		}
 
-		internal protected Model (
-			TItem item
-			, Func<TItem, TItem, bool> isSameItem)
+		public Model ()
+		{			
+		}
+
+		protected virtual void Initialize (TItem item)
 		{
-			_item = item;
-			_isSameItem = isSameItem;
+			Item = item;
 		}
 
 		internal static TModel Build<TModel> (TItem item)
 			where TModel : Model<TItem>
 		{
-			return (TModel)Activator.CreateInstance (typeof(TModel), item);
+			var model = (TModel)Activator.CreateInstance (typeof(TModel));
+			model.Initialize (item);
+
+			var modelProxy = new Proxy<TModel> ()
+				.Target (model)
+				.Implement<IModel<TItem>> ()
+				.InterceptAllSetters ()
+					.OnBefore (mi => Console.WriteLine (mi.Method.Name + " Intercepted!"))
+				.Save ();
+
+			return modelProxy;
 		}
 
 		internal static TModel Build<TModel, TItem> ()
@@ -52,54 +63,66 @@ namespace Hegoburu.Presentation.Desktop.Core
 			where TItem : new()
 		{
 			var item = new TItem ();
-			return (TModel)Activator.CreateInstance (typeof(TModel), item);
+			var model = (TModel)Activator.CreateInstance (typeof(TModel));
+			model.Initialize (item);
+
+			var modelProxy = new Proxy<TModel> ()
+				.Target (model)
+				.Implement<IModel<TItem>> ()
+				.InterceptAllSetters ()
+					.OnBefore (mi => Console.WriteLine (mi.Method.Name + " Intercepted!"))
+
+					.Save ();
+
+			//modelProxy.Item = item;
+			return modelProxy;
 		}
 
-		protected virtual void HandleItemUpdated ()
+		internal virtual void HandleItemUpdated ()
 		{
 		}
 
-		public void OnPropertyChanged (string name)
+		public virtual void OnPropertyChanged (string name)
 		{
 			if (PropertyChanged != null)
 				PropertyChanged (this, new PropertyChangedEventArgs (name));
 		}
 
-		public bool IsSameAs (Model<TItem> model)
+		public virtual bool IsSameAs (Model<TItem> model)
 		{
-			var isSameModelType = model.GetType () == this.GetType ();
-			var isSameItem = _isSameItem (this.Item, model.Item);
+			var isSameModelType = model.GetType () == this.GetType () || model.GetType ().BaseType == this.GetType ();
+			var isSameItem = IsSameItem (this.Item, model.Item);
 
 			return isSameModelType && isSameItem;
 		}
 
-		public bool IsSameAs<TModel> (TItem item)
+		public virtual bool IsSameAs<TModel> (TItem item)
 			where TModel : Model<TItem>
 		{
-			var isSameModelType = typeof(TModel) == this.GetType ();
-			var isSameItem = _isSameItem (this.Item, item);
+			var isSameModelType = typeof(TModel) == this.GetType () || typeof(TModel) == this.GetType ().BaseType;
+			var isSameItem = IsSameItem (this.Item, item);
 
 			return isSameModelType && isSameItem;
 		}
 
-		public bool IsSameAs<TModel, TItem> ()
+		public virtual bool IsSameAs<TModel, TItem> ()
 			where TModel : Model<TItem>
 			where TItem : new()
 		{
-			var isSameModelType = typeof(TModel) == this.GetType ();
+			var isSameModelType = typeof(TModel) == this.GetType () || typeof(TModel) == this.GetType ().BaseType;
 			var isSameItem = typeof(TItem) == this.Item.GetType ();
 
 			return isSameModelType && isSameItem;
 		}
 
-		public bool IsInUse ()
+		public virtual bool IsInUse ()
 		{
 			return 
 				PropertyChanged != null 
 				&& PropertyChanged.GetInvocationList ().Any ();
 		}
 
-		public void Delete ()
+		public virtual void Delete ()
 		{
 			ModelManager.GetInstance ().Untrack<Model<TItem>, TItem> (this);
 			if (Deleting != null)

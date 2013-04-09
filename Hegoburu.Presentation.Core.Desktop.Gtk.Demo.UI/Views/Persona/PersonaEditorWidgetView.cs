@@ -33,7 +33,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.Persona
 			Model.Nombre = txtNombre.Text;
 		}
 
-		protected void OnTxtApellidoWidgetRemoved (object sender, EventArgs e)
+		protected void OnTxtApellidoEditingDone (object sender, EventArgs e)
 		{
 			Model.Apellido = txtApellido.Text;
 		}
