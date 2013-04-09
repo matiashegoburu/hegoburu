@@ -27,6 +27,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 			where TModel : Model<TItem>
 			where TController : Controller<TView, TModel, TItem, TController>
 			where TView: IView<TModel, TItem, TController, TView>
+			where TItem : new()
 		{
 			var trackedItem = TrackedViews
 				.OfType<TView> ()
@@ -45,6 +46,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 			where TModel : Model<TItem>
 			where TController : Controller<TView, TModel, TItem, TController>
 			where TView: IView<TModel, TItem, TController, TView>
+			where TItem : new()
 		{
 			var trackedItem = TrackedViews
 				.OfType<TView> ()
@@ -62,6 +64,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 			where TModel : Model<TItem>
 			where TController : Controller<TView, TModel, TItem, TController>
 			where TView: IView<TModel, TItem, TController, TView>
+			where TItem : new()
 		{
 			if (TrackedViews.OfType<TView> ().Any (v => v.Model.IsSameAs (view.Model)))
 				return;
@@ -73,6 +76,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 			where TModel : Model<TItem>
 			where TController : Controller<TView, TModel, TItem, TController>
 			where TView: IView<TModel, TItem, TController, TView>
+			where TItem : new()
 		{
 			var itemToRemove = TrackedViews
 				.OfType<TView> ()

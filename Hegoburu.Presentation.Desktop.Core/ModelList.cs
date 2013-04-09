@@ -22,7 +22,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 		: ObservableCollection<TModel>
 		, IDisposable
 		where TModel : Model<TItem>
-		where TItem : class
+		where TItem : new()
 	{
 		protected List<TItem> Source{ get; set; }
 

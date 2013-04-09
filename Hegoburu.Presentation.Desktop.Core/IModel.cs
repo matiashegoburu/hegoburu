@@ -6,6 +6,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 	public interface IModel<TItem> 
 		: INotifyPropertyChanged
 		, IDisposable
+			where TItem : new()
 	{
 		#region INotifyPropertyChanged implementation
 		event PropertyChangedEventHandler PropertyChanged;

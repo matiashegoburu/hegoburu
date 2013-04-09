@@ -6,6 +6,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 		where TModel : Model<TItem>
 		where TController : Controller<TView, TModel, TItem, TController>
 		where TView : IView<TModel, TItem, TController, TView>
+		where TItem : new()
 	{
 		public TModel Model { get; protected set; }
 		public TView View { get; protected set; } 

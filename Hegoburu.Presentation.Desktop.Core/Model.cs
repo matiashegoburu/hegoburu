@@ -7,6 +7,7 @@ using Proxi;
 namespace Hegoburu.Presentation.Desktop.Core
 {
 	public class Model<TItem> : IModel<TItem>
+		where TItem : new()
 	{
 		#region INotifyPropertyChanged implementation
 		public virtual event PropertyChangedEventHandler PropertyChanged;
@@ -50,7 +51,6 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 			var modelProxy = new Proxy<TModel> ()
 				.Target (model)
-			//.Implement<IModel<TItem>> ()
 				.InterceptAllSetters ()
 					.OnInvoke (mi => {
 				Console.WriteLine (mi.Method.Name + " Intercepted!" + mi.Arguments.First ());
@@ -62,28 +62,11 @@ namespace Hegoburu.Presentation.Desktop.Core
 			return modelProxy;
 		}
 
-		internal static TModel Build<TModel, TItem> ()
+		internal static TModel Build<TModel> ()
 			where TModel : Model<TItem>
-			where TItem : new()
 		{
 			var item = new TItem ();
-			var model = (TModel)Activator.CreateInstance (typeof(TModel));
-			model.Initialize (item);
-
-			var modelProxy = new Proxy<TModel> ()
-				.Target (model)
-			//.Implement<IModel<TItem>> ()
-				.InterceptAllSetters ()
-					.OnInvoke (mi => {
-				Console.WriteLine (mi.Method.Name + " Intercepted!" + mi.Arguments.First ());
-				mi.Method.Invoke (mi.Target, mi.Arguments);
-			}
-			)
-
-					.Save ();
-
-			//modelProxy.Item = item;
-			return modelProxy;
+			return Build <TModel> (item);
 		}
 
 		internal virtual void HandleItemUpdated ()

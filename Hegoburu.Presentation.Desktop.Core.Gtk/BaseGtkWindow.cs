@@ -8,6 +8,7 @@ public class BaseGtkWindow<TModel, TItem, TController, TView>
 	where TModel : Model<TItem>
 	where TView : BaseGtkWindow<TModel, TItem, TController, TView>
 	where TController : Controller<TView, TModel, TItem, TController>
+	where TItem : new()
 {	
 	#region IView implementation
 	TModel model;

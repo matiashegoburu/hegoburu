@@ -25,6 +25,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 		public TModel Get<TModel, TItem> (TItem item)
 			where TModel : Model<TItem>
+			where TItem : new()
 		{
 			var trackedItem = TrackedModels
 				.OfType<TModel> ()
@@ -47,7 +48,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 				.SingleOrDefault (m => m.IsSameAs<TModel,TItem> ());
 
 			if (null == trackedItem) {
-				trackedItem = Model<TItem>.Build<TModel, TItem> ();
+				trackedItem = Model<TItem>.Build<TModel> ();
 				Track<TModel, TItem> (trackedItem);
 			}
 
@@ -56,6 +57,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 		public void Track<TModel, TItem> (TModel model)
 			where TModel : Model<TItem>
+			where TItem : new()
 		{
 			if (TrackedModels.OfType<TModel> ().Any (m => m.IsSameAs (model)))
 				return;
@@ -65,6 +67,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 		public void Untrack<TModel, TItem> (TModel model)
 			where TModel : Model<TItem>
+			where TItem : new()
 		{
 			var itemToRemove = TrackedModels
 				.OfType<TModel> ()
