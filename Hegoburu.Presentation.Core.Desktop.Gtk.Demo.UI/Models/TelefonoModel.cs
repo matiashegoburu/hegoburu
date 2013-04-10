@@ -16,34 +16,11 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 			}
 		}
 
-		public virtual int Pais {
-			get {
-				return Item.Pais;
-			}
-			set {
-				Item.Pais = value;
-				OnPropertyChanged ("Pais");
-			}
-		}
+		public virtual int Pais { get; set; }
 
-		public virtual int Area {
-			get {
-				return Item.Area;
-			}
-			set {
-				Item.Area = value;
-				OnPropertyChanged ("Area");
-			}
-		}
+		public virtual int Area { get; set; }
 
-		public virtual int Numero {
-			get {
-				return Item.Numero;
-			}
-			set {
-				Item.Numero = value;
-			}
-		}
+		public virtual int Numero{ get; set; }
 	}
 }
 

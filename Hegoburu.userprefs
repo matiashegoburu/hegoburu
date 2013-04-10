@@ -2,43 +2,33 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Hegoburu.Presentation.Desktop.Core/Model.cs">
     <Files>
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaListWidgetView.cs" Line="55" Column="1" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaListWidgetController.cs" Line="28" Column="22" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaEditorWidgetController.cs" Line="10" Column="44" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/MainWidgetController.cs" Line="42" Column="75" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelList.cs" Line="24" Column="3" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWidget.cs" Line="107" Column="1" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaEditorWidgetView.cs" Line="21" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelManager.cs" Line="45" Column="1" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/PersonaListModel.cs" Line="20" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWindow.cs" Line="44" Column="3" />
-      <File FileName="Hegoburu.DAL.Core/IRepository.cs" Line="12" Column="21" />
-      <File FileName="Hegoburu.DAL.Core.NHibernate/Repository.cs" Line="31" Column="4" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/MainModel.cs" Line="12" Column="22" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/PersonaModel.cs" Line="28" Column="4" />
-      <File FileName="Hegoburu.PResentation.Core.Desktop.Gtk.Demo/MainWindow.cs" Line="18" Column="1" />
-      <File FileName="Hegoburu.PResentation.Core.Desktop.Gtk.Demo/Main.cs" Line="9" Column="4" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/TelefonoModel.cs" Line="21" Column="4" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/AssemblyInfo.cs" Line="21" Column="33" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/AssemblyInfo.cs" Line="21" Column="33" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/Model.cs" Line="65" Column="26" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/IView.cs" Line="1" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/IModel.cs" Line="24" Column="23" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/MainWidgetView.cs" Line="26" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/ViewManager.cs" Line="58" Column="1" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/Model.cs" Line="53" Column="20" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/PersonaListModel.cs" Line="16" Column="3" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/PersonaModel.cs" Line="47" Column="1" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/TelefonoModel.cs" Line="7" Column="52" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/MainModel.cs" Line="9" Column="3" />
+      <File FileName="Hegoburu.PResentation.Core.Desktop.Gtk.Demo/MainWindow.cs" Line="15" Column="1" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelManager.cs" Line="70" Column="23" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaListWidgetController.cs" Line="20" Column="3" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaListWidgetView.cs" Line="58" Column="25" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/MainWidgetController.cs" Line="56" Column="35" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaEditorWidgetController.cs" Line="33" Column="1" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaEditorWidgetView.cs" Line="28" Column="40" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/MainWidgetView.cs" Line="24" Column="4" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/DAL.Repository/PersonaRepository.cs" Line="11" Column="3" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelList.cs" Line="54" Column="1" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/IModel.cs" Line="9" Column="23" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/Controller.cs" Line="9" Column="22" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/IView.cs" Line="10" Column="22" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/ViewManager.cs" Line="79" Column="23" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWindow.cs" Line="11" Column="21" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWidget.cs" Line="21" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Hegoburu.DAL.Core" expanded="True" />
-          <Node name="Hegoburu.PResentation.Core.Desktop.Gtk.Demo" expanded="True" />
           <Node name="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI" expanded="True">
-            <Node name="UserInterface" expanded="True" />
             <Node name="Controllers" expanded="True" />
-            <Node name="Models" expanded="True" />
-            <Node name="Views" expanded="True">
-              <Node name="Persona" expanded="True" />
-            </Node>
           </Node>
           <Node name="Hegoburu.Presentation.Desktop.Core" expanded="True">
             <Node name="Model.cs" selected="True" />
@@ -203,14 +193,6 @@
       <Catchpoint exceptionName="System.TypeUnloadedException" />
       <Catchpoint exceptionName="System.UnauthorizedAccessException" />
       <Catchpoint exceptionName="System.UriFormatException" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Desktop.Core/Model.cs" line="42" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Desktop.Core/Model.cs" line="48" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Desktop.Core/Model.cs" line="63" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Desktop.Core/ModelManager.cs" line="45" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Desktop.Core/Model.cs" line="95" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Desktop.Core/Model.cs" line="104" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Desktop.Core/Model.cs" line="114" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaListWidgetController.cs" line="22" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

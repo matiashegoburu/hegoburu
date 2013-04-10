@@ -17,119 +17,141 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 		TItem _item;
 
-		public virtual TItem Item {
-			get {
+		public virtual TItem Item
+		{
+			get
+			{
 				return _item;
 			}
-			set {
+			set
+			{
 				_item = value;
-				HandleItemUpdated ();
-				OnPropertyChanged ("Item");
+				HandleItemUpdated();
+				OnPropertyChanged("Item");
 			}
 		}
 
-		protected virtual Func<TItem, TItem, bool> IsSameItem { 
-			get {
-				return (i1, i2) => i1.Equals (i2);
+		protected virtual Func<TItem, TItem, bool> IsSameItem
+		{ 
+			get
+			{
+				return (i1, i2) => i1.Equals(i2);
 			}
 		}
 
-		public Model ()
+		public Model()
 		{			
 		}
 
-		protected virtual void Initialize (TItem item)
+		protected virtual void Initialize(TItem item)
 		{
 			Item = item;
 		}
 
-		internal static TModel Build<TModel> (TItem item)
+		internal static TModel Build<TModel>(TItem item)
 			where TModel : Model<TItem>
 		{
-			var model = (TModel)Activator.CreateInstance (typeof(TModel));
-			model.Initialize (item);
+			var model = (TModel)Activator.CreateInstance(typeof(TModel));
+			model.Initialize(item);
 
-			var modelProxy = new Proxy<TModel> ()
-				.Target (model)
-				.InterceptAllSetters ()
-					.OnInvoke (mi => {
-				Console.WriteLine (mi.Method.Name + " Intercepted!" + mi.Arguments.First ());
-				mi.Method.Invoke (mi.Target, mi.Arguments);
+			var modelProxy = new Proxy<TModel>()
+				.Target(model)
+				.InterceptAllSetters()
+					.OnInvoke(mi => {
+				var newValue = mi.Arguments.First();
+				var propertyName = mi.Method.Name.Substring(4);
+				var targetItem = (mi.Target as TModel).Item;
+				var itemProperty = targetItem.GetType().GetProperty(propertyName);
+				if (itemProperty != null)
+				{
+					var currentValue = itemProperty.GetGetMethod().Invoke(targetItem, null);
+					if (newValue != null && !newValue.Equals(currentValue))
+					{					
+						mi.Method.Invoke(mi.Target, mi.Arguments);
+						itemProperty.GetSetMethod().Invoke(targetItem, new []{newValue});
+					
+						var notifyPropertyChangedMethod = mi.Target.GetType().GetMethod("OnPropertyChanged");
+						notifyPropertyChangedMethod.Invoke(mi.Target, new []{propertyName});
+					}
+				} else
+				{
+					// TODO
+				}
 			}
 			)
-				.Save ();
+				.Save();
 
 			return modelProxy;
 		}
 
-		internal static TModel Build<TModel> ()
+		internal static TModel Build<TModel>()
 			where TModel : Model<TItem>
 		{
-			var item = new TItem ();
-			return Build <TModel> (item);
+			var item = new TItem();
+			return Build <TModel>(item);
 		}
 
-		internal virtual void HandleItemUpdated ()
+		internal virtual void HandleItemUpdated()
 		{
 		}
 
-		public virtual void OnPropertyChanged (string name)
+		public virtual void OnPropertyChanged(string name)
 		{
 			if (PropertyChanged != null)
-				PropertyChanged (this, new PropertyChangedEventArgs (name));
+				PropertyChanged(this, new PropertyChangedEventArgs(name));
 		}
 
-		public virtual bool IsSameAs (Model<TItem> model)
+		public virtual bool IsSameAs(Model<TItem> model)
 		{
-			var isSameModelType = model.GetType () == this.GetType () || model.GetType ().BaseType == this.GetType ();
-			var isSameItem = IsSameItem (this.Item, model.Item);
+			var isSameModelType = model.GetType() == this.GetType() || model.GetType().BaseType == this.GetType();
+			var isSameItem = IsSameItem(this.Item, model.Item);
 
 			return isSameModelType && isSameItem;
 		}
 
-		public virtual bool IsSameAs<TModel> (TItem item)
+		public virtual bool IsSameAs<TModel>(TItem item)
 			where TModel : Model<TItem>
 		{
-			var isSameModelType = typeof(TModel) == this.GetType () || typeof(TModel) == this.GetType ().BaseType;
-			var isSameItem = IsSameItem (this.Item, item);
+			var isSameModelType = typeof(TModel) == this.GetType() || typeof(TModel) == this.GetType().BaseType;
+			var isSameItem = IsSameItem(this.Item, item);
 
 			return isSameModelType && isSameItem;
 		}
 
-		public virtual bool IsSameAs<TModel, TItem> ()
+		public virtual bool IsSameAs<TModel, TItem>()
 			where TModel : Model<TItem>
 			where TItem : new()
 		{
-			var isSameModelType = typeof(TModel) == this.GetType () || typeof(TModel) == this.GetType ().BaseType;
-			var isSameItem = typeof(TItem) == this.Item.GetType ();
+			var isSameModelType = typeof(TModel) == this.GetType() || typeof(TModel) == this.GetType().BaseType;
+			var isSameItem = typeof(TItem) == this.Item.GetType();
 
 			return isSameModelType && isSameItem;
 		}
 
-		public virtual bool IsInUse ()
+		public virtual bool IsInUse()
 		{
 			return 
 				PropertyChanged != null 
-				&& PropertyChanged.GetInvocationList ().Any ();
+				&& PropertyChanged.GetInvocationList().Any();
 		}
 
-		public virtual void Delete ()
+		public virtual void Delete()
 		{
-			ModelManager.GetInstance ().Untrack<Model<TItem>, TItem> (this);
+			ModelManager.GetInstance().Untrack<Model<TItem>, TItem>(this);
 			if (Deleting != null)
-				Deleting (this, EventArgs.Empty);
+				Deleting(this, EventArgs.Empty);
 		}
 
 		#region IDisposable implementation
-		public virtual void Dispose ()
+		public virtual void Dispose()
 		{
-			if (PropertyChanged != null && PropertyChanged.GetInvocationList ().Any ())
+			if (PropertyChanged != null && PropertyChanged.GetInvocationList().Any())
 				return;
 
-			ModelManager.GetInstance ().Untrack<Model<TItem>, TItem> (this);
+			ModelManager.GetInstance().Untrack<Model<TItem>, TItem>(this);
 
 			if (Deleting != null)
-				Deleting (this, EventArgs.Empty);
+				Deleting(this, EventArgs.Empty);
 		}
 		#endregion
 	}

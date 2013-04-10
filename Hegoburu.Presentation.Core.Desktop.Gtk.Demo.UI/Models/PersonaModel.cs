@@ -26,55 +26,14 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Models
 			}
 		}
 
-		public virtual int DNI {
-			get {
-				return Item.DNI;
-			}
-			set {
-				if (Item.DNI == value)
-					return;
+		public virtual int DNI { get; set; }
 
-				Item.DNI = value;
-				OnPropertyChanged ("DNI");
-			}
-		}
+		public virtual string Nombre { get; set; }
 
-		public virtual string Nombre {
-			get {
-				return Item.Nombre;
-			}
-			set {
-				if (Item.Nombre == value)
-					return;
-
-				Item.Nombre = value;
-				OnPropertyChanged ("Nombre");
-			}
-		}
-
-		public virtual string Apellido {
-			get {
-				return Item.Apellido;
-			}
-			set {
-				if (Item.Apellido == value)
-					return;
-
-				Item.Apellido = value;
-				OnPropertyChanged ("Apellido");
-			}
-		}
+		public virtual string Apellido { get; set; }
 
 		ModelList<TelefonoModel, TelefonoEntity> _telefonos;
-		public virtual ModelList<TelefonoModel, TelefonoEntity> Telefonos {
-			get {
-				return _telefonos;
-			}
-			set {
-				_telefonos = value;
-				OnPropertyChanged ("Telefonos");
-			}
-		}
+		public virtual ModelList<TelefonoModel, TelefonoEntity> Telefonos { get; set; }
 	}
 }
 
