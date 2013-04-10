@@ -66,6 +66,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">Borrar</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBtnBorrarClicked" />
               </widget>
               <packing>
                 <property name="Position">2</property>
@@ -111,6 +112,7 @@
             <property name="CanFocus">True</property>
             <property name="IsEditable">True</property>
             <property name="InvisibleChar">•</property>
+            <signal name="EditingDone" handler="OnTxtDNIEditingDone" />
           </widget>
           <packing>
             <property name="X">121</property>

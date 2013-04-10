@@ -92,6 +92,7 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.Persona
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.txtDNI.EditingDone += new global::System.EventHandler (this.OnTxtDNIEditingDone);
 			this.txtNombre.EditingDone += new global::System.EventHandler (this.OnTxtNombreEditingDone);
 			this.txtApellido.EditingDone += new global::System.EventHandler (this.OnTxtApellidoEditingDone);
 			this.btnOk.Clicked += new global::System.EventHandler (this.OnBtnOkClicked);

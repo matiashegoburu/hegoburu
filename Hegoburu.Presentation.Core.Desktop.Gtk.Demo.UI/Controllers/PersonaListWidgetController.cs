@@ -24,56 +24,72 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Controllers
 
 		private PersonaRepository _personaRepository;
 
-		public PersonaListWidgetController (PersonaListWidgetView view, PersonaListModel model) 
+		public PersonaListWidgetController(PersonaListWidgetView view, PersonaListModel model) 
 			: base(view, model)
 		{
-			_personaRepository = new PersonaRepository ();
+			_personaRepository = new PersonaRepository();
 			model.Personas.ItemChanged += HandleItemChanged;
 		}
 
-		void HandleItemChanged (object sender, ItemChangedEventArgs e)
+		void HandleItemChanged(object sender, ItemChangedEventArgs e)
 		{
-			Refrescar ();
+			Refrescar();
 		}
 
-		public void Agregar ()
+		public void Agregar()
 		{
 			if (AgregarClicked != null)
-				AgregarClicked (this, EventArgs.Empty);
+				AgregarClicked(this, EventArgs.Empty);
 		}
 
-		public void Cargar ()
+		public void Cargar()
 		{
-			var ivwPersonas = View.AllChildren.OfType<global::Gtk.VPaned> ().First ().Child1 as global::Gtk.IconView;
-			var list = new global::Gtk.ListStore (typeof(int), typeof(string));
+			var ivwPersonas = View.AllChildren.OfType<global::Gtk.VPaned>().First().Child1 as global::Gtk.IconView;
+			var list = new global::Gtk.ListStore(typeof(int), typeof(string));
 			foreach (var persona in Model.Item)
-				list.AppendValues (persona.DNI, string.Format ("{0} {1}", persona.Nombre, persona.Apellido));
+				list.AppendValues(persona.DNI, string.Format("{0} {1}", persona.Nombre, persona.Apellido));
 			ivwPersonas.Model = list;
 			ivwPersonas.TextColumn = 1;
 			ivwPersonas.SelectionMode = global::Gtk.SelectionMode.Single;
 		}
 
-		public void Editar ()
+		public void Editar()
 		{
-			var ivwPersonas = View.AllChildren.OfType<global::Gtk.VPaned> ().First ().Child1 as global::Gtk.IconView;
-			var path = ivwPersonas.SelectedItems.First ();
+			var ivwPersonas = View.AllChildren.OfType<global::Gtk.VPaned>().First().Child1 as global::Gtk.IconView;
+			var path = ivwPersonas.SelectedItems.First();
 			var store = ivwPersonas.Model as  global::Gtk.ListStore;
 
 			global::Gtk.TreeIter iter;
-			store.GetIter (out iter, path);
-			var id = (int)store.GetValue (iter, 0);
+			store.GetIter(out iter, path);
+			var id = (int)store.GetValue(iter, 0);
 			if (EditarClicked != null)
-				EditarClicked (this, new EditarEventArgs{Id = id});
+				EditarClicked(this, new EditarEventArgs{Id = id});
 		}
 
-		public void Refrescar ()
+		public void Refrescar()
 		{
 //			Model.Personas.Clear ();
 //			var personas = _personaRepository.Get ();
 //			personas.ForEach (p => Model.Personas.Add (ModelManager.GetInstance ().Get<PersonaModel, PersonaEntity> (p)));
 
-			Cargar ();
+			Cargar();
 
+		}
+
+		public void Borrar()
+		{
+			var ivwPersonas = View.AllChildren.OfType<global::Gtk.VPaned>().First().Child1 as global::Gtk.IconView;
+			var path = ivwPersonas.SelectedItems.First();
+			var store = ivwPersonas.Model as  global::Gtk.ListStore;
+
+			global::Gtk.TreeIter iter;
+			store.GetIter(out iter, path);
+			var id = (int)store.GetValue(iter, 0);
+			var persona = _personaRepository.Get().Single(p => p.DNI == id);
+
+			var personaModel = ModelManager.GetInstance().Get<PersonaModel, PersonaEntity>(persona);
+			personaModel.Delete();
+			_personaRepository.Delete(persona);
 		}
 	}
 }

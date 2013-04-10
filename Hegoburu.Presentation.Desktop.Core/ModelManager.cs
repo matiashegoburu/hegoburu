@@ -11,72 +11,74 @@ namespace Hegoburu.Presentation.Desktop.Core
 			() =>
 			{
 				if (null == ModelManagerInstance)
-					ModelManagerInstance = new ModelManager ();
+					ModelManagerInstance = new ModelManager();
 
 				return ModelManagerInstance;
 			};
 
 		private List<object> TrackedModels { get; set; }
 
-		public ModelManager ()
+		public ModelManager()
 		{
-			TrackedModels = new List<object> (); 
+			TrackedModels = new List<object>(); 
 		}
 
-		public TModel Get<TModel, TItem> (TItem item)
+		public TModel Get<TModel, TItem>(TItem item)
 			where TModel : Model<TItem>
 			where TItem : new()
 		{
 			var trackedItem = TrackedModels
-				.OfType<TModel> ()
-				.SingleOrDefault (m => m.IsSameAs<TModel> (item));
+				.OfType<TModel>()
+				.SingleOrDefault(m => m.IsSameAs<TModel>(item));
 
-			if (null == trackedItem) {
-				trackedItem = Model<TItem>.Build<TModel> (item);
-				Track<TModel, TItem> (trackedItem);
+			if (null == trackedItem)
+			{
+				trackedItem = Model<TItem>.Build<TModel>(item);
+				Track<TModel, TItem>(trackedItem);
 			}
 
 			return trackedItem;
 		}
 
-		public TModel Get<TModel, TItem> ()
+		public TModel Get<TModel, TItem>()
 			where TModel : Model<TItem>
 			where TItem : new()
 		{
 			var trackedItem = TrackedModels
-				.OfType<TModel> ()
-				.SingleOrDefault (m => m.IsSameAs<TModel,TItem> ());
+				.OfType<TModel>()
+				.SingleOrDefault(m => m.IsSameAs<TModel,TItem>());
 
-			if (null == trackedItem) {
-				trackedItem = Model<TItem>.Build<TModel> ();
-				Track<TModel, TItem> (trackedItem);
+			if (null == trackedItem)
+			{
+				trackedItem = Model<TItem>.Build<TModel>();
+				Track<TModel, TItem>(trackedItem);
 			}
 
 			return trackedItem;
 		}
 
-		public void Track<TModel, TItem> (TModel model)
+		public void Track<TModel, TItem>(TModel model)
 			where TModel : Model<TItem>
 			where TItem : new()
 		{
-			if (TrackedModels.OfType<TModel> ().Any (m => m.IsSameAs (model)))
+			if (TrackedModels.OfType<TModel>().Any(m => m.IsSameAs(model)))
 				return;
 
-			TrackedModels.Add (model);
+			TrackedModels.Add(model);
 		}
 
-		public void Untrack<TModel, TItem> (TModel model)
+		public void Untrack<TModel, TItem>(TModel model)
 			where TModel : Model<TItem>
 			where TItem : new()
 		{
 			var itemToRemove = TrackedModels
-				.OfType<TModel> ()
-				.SingleOrDefault (m => m.Equals (model));
+				.OfType<TModel>()
+				.SingleOrDefault(m => m.IsSameAs(model));
 
 			if (null == itemToRemove)
 				return;
 
-			TrackedModels.Remove (itemToRemove);
+			TrackedModels.Remove(itemToRemove);
 		}
 	}
 }

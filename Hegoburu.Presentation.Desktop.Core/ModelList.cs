@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace Hegoburu.Presentation.Desktop.Core
 {
 	public class ItemChangedEventArgs : EventArgs
 	{
 
-		public ItemChangedEventArgs (object item, string propertyName)
+		public ItemChangedEventArgs(object item, string propertyName)
 		{
 			Item = item;
 			PropertyName = propertyName;
@@ -28,64 +29,79 @@ namespace Hegoburu.Presentation.Desktop.Core
 
 		public event EventHandler<ItemChangedEventArgs> ItemChanged;
 
-		public ModelList (List<TItem> source)
+		public ModelList(List<TItem> source)
 		{
 			Source = source; 
 
-			foreach (var item in source) {
-				var itemModel = ModelManager.GetInstance ().Get<TModel, TItem> (item);
+			foreach (var item in source)
+			{
+				var itemModel = ModelManager.GetInstance().Get<TModel, TItem>(item);
 				itemModel.PropertyChanged += HandlePropertyChanged;
-				Add (itemModel);
+				itemModel.Deleting += HandleDeleting;
+				Add(itemModel);
 			}
 		}
 
-		void HandlePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		void HandleDeleting(object sender, EventArgs e)
 		{
-			if (ItemChanged != null)
-				ItemChanged (this, new ItemChangedEventArgs (sender, e.PropertyName));
+			var modelToRemove = this.SingleOrDefault(m => m.IsSameAs(sender as TModel));
+			Remove(modelToRemove);
 		}
 
-		protected override void OnCollectionChanged (NotifyCollectionChangedEventArgs e)
+		void HandlePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			base.OnCollectionChanged (e);
+			if (ItemChanged != null)
+				ItemChanged(this, new ItemChangedEventArgs(sender, e.PropertyName));
+		}
 
-			switch (e.Action) {
-			case NotifyCollectionChangedAction.Add:
-				foreach (TModel itemModel in e.NewItems) {
-					itemModel.PropertyChanged += HandlePropertyChanged;
-					Source.Add (itemModel.Item);
-				}
-				break;
+		protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+		{
+			switch (e.Action)
+			{
+				case NotifyCollectionChangedAction.Add:
+					foreach (TModel itemModel in e.NewItems)
+					{
+						itemModel.PropertyChanged += HandlePropertyChanged;
+						itemModel.Deleting += HandleDeleting;
+						Source.Add(itemModel.Item);
+					}
+					break;
 
-			case NotifyCollectionChangedAction.Remove:
-				foreach (TModel itemModel in e.OldItems) {
-					itemModel.PropertyChanged -= HandlePropertyChanged;
-					Source.Remove (itemModel.Item);
-				}
+				case NotifyCollectionChangedAction.Remove:
+					foreach (TModel itemModel in e.OldItems)
+					{
+						itemModel.PropertyChanged -= HandlePropertyChanged;
+						itemModel.Deleting -= HandleDeleting;
+						Source.Remove(itemModel.Item);
+					}
 
-				break;
+					break;
 
-			case NotifyCollectionChangedAction.Reset:
-				foreach (var model in this)
-					model.PropertyChanged -= HandlePropertyChanged;
+				case NotifyCollectionChangedAction.Reset:
+					foreach (var model in this)
+						model.PropertyChanged -= HandlePropertyChanged;
 
-				Source.Clear ();
+					Source.Clear();
 
-				break;
+					break;
 			
-			case NotifyCollectionChangedAction.Replace:
-				throw new NotImplementedException ();
+				case NotifyCollectionChangedAction.Replace:
+					throw new NotImplementedException();
 			//Source [e.OldStartingIndex] = e.NewItems.First ();
 			//break;
 			}
+
+			base.OnCollectionChanged(e);
 		}
 
 		#region IDisposable implementation
-		public void Dispose ()
+		public void Dispose()
 		{
-			foreach (var model in this) {
+			foreach (var model in this)
+			{
 				model.PropertyChanged -= HandlePropertyChanged;
-				model.Dispose ();
+				model.Deleting -= HandleDeleting;
+				model.Dispose();
 			}
 		}
 		#endregion
