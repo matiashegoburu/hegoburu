@@ -57,7 +57,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 			var modelProxy = new Proxy<TModel>()
 				.Target(model)
 				.InterceptAllSetters()
-					.OnInvoke(mi => {
+				.OnInvoke(mi => {
 				var newValue = mi.Arguments.First();
 				var propertyName = mi.Method.Name.Substring(4);
 				var targetItem = (mi.Target as TModel).Item;
@@ -67,16 +67,39 @@ namespace Hegoburu.Presentation.Desktop.Core
 					var currentValue = itemProperty.GetGetMethod().Invoke(targetItem, null);
 					if (newValue != null && !newValue.Equals(currentValue))
 					{					
-						mi.Method.Invoke(mi.Target, mi.Arguments);
 						itemProperty.GetSetMethod().Invoke(targetItem, new []{newValue});
-					
+						
 						var notifyPropertyChangedMethod = mi.Target.GetType().GetMethod("OnPropertyChanged");
 						notifyPropertyChangedMethod.Invoke(mi.Target, new []{propertyName});
 					}
-				} else
-				{
-					// TODO
 				}
+				else
+				{
+					var targetProperty = mi.Target.GetType().GetProperty(propertyName);
+					var targetGetMethod = targetProperty.GetGetMethod(); 
+						
+					var currentValue = targetGetMethod.Invoke(targetItem, null);
+					if (newValue != null && !newValue.Equals(currentValue))
+					{					
+						mi.Method.Invoke(mi.Target, mi.Arguments);
+						var notifyPropertyChangedMethod = mi.Target.GetType().GetMethod("OnPropertyChanged");
+						notifyPropertyChangedMethod.Invoke(mi.Target, new []{propertyName});
+					}
+				}
+			}
+			)
+				.InterceptAllGetters()
+				.OnInvoke(mi => {
+				var propertyName = mi.Method.Name.Substring(4);
+				var targetItem = (mi.Target as TModel).Item;
+				var itemProperty = targetItem.GetType().GetProperty(propertyName);
+				if (itemProperty != null)
+				{
+					return itemProperty.GetGetMethod().Invoke(targetItem, null);
+				}
+				
+				return mi.Method.Invoke(mi.Target, mi.Arguments);
+
 			}
 			)
 				.Save();

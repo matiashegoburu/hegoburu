@@ -11,47 +11,57 @@ namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views.Persona
 	public partial class PersonaEditorWidgetView 
 		: BaseGtkWidget<PersonaModel, PersonaEntity, PersonaEditorWidgetController, PersonaEditorWidgetView>
 	{
-		public PersonaEditorWidgetView (PersonaModel model) : base(model)
+		public PersonaEditorWidgetView(PersonaModel model) : base(model)
 		{
-			this.Build ();
+			this.Build();
 		}
 
-		protected override void HandlePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		protected override void HandlePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			txtDNI.Text = Model.DNI.ToString ();
-			txtNombre.Text = Model.Nombre;
-			txtApellido.Text = Model.Apellido;
+			switch (e.PropertyName)
+			{
+				case "DNI":
+					txtDNI.Text = Model.DNI.ToString();
+					break;
+				case "Nombre":
+					txtNombre.Text = Model.Nombre;
+					break;
+				case "Apellido":
+					txtApellido.Text = Model.Apellido;
+					break;
+			}
+
 		}
 
-		protected void OnTxtDNIEditingDone (object sender, EventArgs e)
+		protected void OnTxtDNIEditingDone(object sender, EventArgs e)
 		{
-			Model.DNI = int.Parse (txtDNI.Text);
+			Model.DNI = int.Parse(txtDNI.Text);
 		}
 
-		protected void OnTxtNombreEditingDone (object sender, EventArgs e)
+		protected void OnTxtNombreEditingDone(object sender, EventArgs e)
 		{
 			Model.Nombre = txtNombre.Text;
 		}
 
-		protected void OnTxtApellidoEditingDone (object sender, EventArgs e)
+		protected void OnTxtApellidoEditingDone(object sender, EventArgs e)
 		{
 			Model.Apellido = txtApellido.Text;
 		}
 
-		protected override void ModelChanged ()
+		protected override void ModelChanged()
 		{
-			txtDNI.Text = Model.DNI.ToString ();
+			txtDNI.Text = Model.DNI.ToString();
 			txtNombre.Text = Model.Nombre;
 			txtApellido.Text = Model.Apellido;
 		}
 
-		protected void OnBtnOkClicked (object sender, EventArgs e)
+		protected void OnBtnOkClicked(object sender, EventArgs e)
 		{
-			txtDNI.FinishEditing ();
-			txtNombre.FinishEditing ();
-			txtApellido.FinishEditing ();
+			txtDNI.FinishEditing();
+			txtNombre.FinishEditing();
+			txtApellido.FinishEditing();
 
-			Controller.Agregar ();
+			Controller.Agregar();
 		}
 	}
 }
