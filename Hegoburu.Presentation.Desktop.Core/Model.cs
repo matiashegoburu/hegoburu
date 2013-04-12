@@ -162,8 +162,12 @@ namespace Hegoburu.Presentation.Desktop.Core
         public virtual void Delete()
         {
             ModelManager.GetInstance().Untrack<Model<TItem>, TItem>(this);
+
             if (Deleting != null)
                 Deleting(this, EventArgs.Empty);
+
+            // Unsubscribe events
+            UnsubscribeEvents();
         }
 
 		#region IDisposable implementation
@@ -173,13 +177,7 @@ namespace Hegoburu.Presentation.Desktop.Core
             if (IsInUse())
                 return;
 
-            ModelManager.GetInstance().Untrack<Model<TItem>, TItem>(this);
-
-            if (Deleting != null)
-                Deleting(this, EventArgs.Empty);
-
-            // Unsubscribe events
-            UnsubscribeEvents();
+            Delete();
 
         }
 		#endregion
