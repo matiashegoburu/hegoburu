@@ -6,7 +6,7 @@ using Proxi;
 
 namespace Hegoburu.Presentation.Desktop.Core
 {
-    public class Model<TItem> : IModel<TItem>
+    public class Model<TItem>
 		where TItem : new()
     {
 		#region INotifyPropertyChanged implementation
@@ -155,8 +155,8 @@ namespace Hegoburu.Presentation.Desktop.Core
         public virtual bool IsInUse()
         {
             return 
-				PropertyChanged != null 
-                && PropertyChanged.GetInvocationList().Any();
+				(PropertyChanged != null && PropertyChanged.GetInvocationList().Any())
+                || (Deleting != null && Deleting.GetInvocationList().Any());
         }
 
         public virtual void Delete()
@@ -167,17 +167,43 @@ namespace Hegoburu.Presentation.Desktop.Core
         }
 
 		#region IDisposable implementation
+
         public virtual void Dispose()
         {
-            if (PropertyChanged != null && PropertyChanged.GetInvocationList().Any())
+            if (IsInUse())
                 return;
 
             ModelManager.GetInstance().Untrack<Model<TItem>, TItem>(this);
 
             if (Deleting != null)
                 Deleting(this, EventArgs.Empty);
+
+            // Unsubscribe events
+            UnsubscribeEvents();
+
         }
 		#endregion
+
+        protected void UnsubscribeEvents()
+        {
+            if (Deleting != null)
+            {
+                var deleteingInvocationList = Deleting.GetInvocationList();
+                foreach (var item in deleteingInvocationList)
+                {
+                    Deleting -= (DeletingEventHandler)item;
+                }
+            }
+
+            if (PropertyChanged != null)
+            {
+                var propertyChangedInvocationList = PropertyChanged.GetInvocationList();
+                foreach (var item in propertyChangedInvocationList)
+                {
+                    PropertyChanged -= (PropertyChangedEventHandler)item;
+                }
+            }
+        }
     }
 }
 

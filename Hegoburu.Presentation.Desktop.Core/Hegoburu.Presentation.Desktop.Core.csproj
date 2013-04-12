@@ -47,7 +47,6 @@
     <Compile Include="DeletingEventHandler.cs" />
     <Compile Include="ViewManager.cs" />
     <Compile Include="ModelList.cs" />
-    <Compile Include="IModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
