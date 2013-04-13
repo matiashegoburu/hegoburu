@@ -1,45 +1,22 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaListWidgetController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hegoburu.Presentation.Desktop.Core/Model.cs">
     <Files>
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/PersonaListModel.cs" Line="16" Column="3" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/PersonaModel.cs" Line="36" Column="82" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/TelefonoModel.cs" Line="23" Column="41" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Models/MainModel.cs" Line="9" Column="3" />
-      <File FileName="Hegoburu.PResentation.Core.Desktop.Gtk.Demo/MainWindow.cs" Line="15" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelManager.cs" Line="74" Column="1" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaListWidgetController.cs" Line="35" Column="4" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/MainWidgetController.cs" Line="33" Column="16" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Controllers/PersonaEditorWidgetController.cs" Line="33" Column="1" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaEditorWidgetView.cs" Line="57" Column="3" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/MainWidgetView.cs" Line="24" Column="4" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/DAL.Repository/PersonaRepository.cs" Line="32" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelList.cs" Line="94" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/IModel.cs" Line="9" Column="23" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/Controller.cs" Line="9" Column="22" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/IView.cs" Line="10" Column="22" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/ViewManager.cs" Line="89" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWindow.cs" Line="11" Column="21" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core.Gtk/BaseGtkWidget.cs" Line="86" Column="1" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaListWidgetView.cs" Line="49" Column="1" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/Model.cs" Line="155" Column="38" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/Model.cs" Line="202" Column="13" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelList.cs" Line="84" Column="17" />
+      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaListWidgetView.cs" Line="53" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Hegoburu.PResentation.Core.Desktop.Gtk.Demo" expanded="True" />
           <Node name="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI" expanded="True">
-            <Node name="UserInterface" expanded="True" />
-            <Node name="Controllers" expanded="True">
-              <Node name="PersonaListWidgetController.cs" selected="True" />
-            </Node>
-            <Node name="DAL.Repository" expanded="True" />
-            <Node name="Models" expanded="True" />
             <Node name="Views" expanded="True">
               <Node name="Persona" expanded="True" />
             </Node>
           </Node>
-          <Node name="Hegoburu.Presentation.Desktop.Core" expanded="True" />
+          <Node name="Hegoburu.Presentation.Desktop.Core" expanded="True">
+            <Node name="Model.cs" selected="True" />
+          </Node>
           <Node name="Hegoburu.Presentation.Desktop.Core.Gtk" expanded="True" />
         </State>
       </Pad>
@@ -57,10 +34,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaListWidgetView.cs" line="49" />
-      <Breakpoint file="/home/matias/Documents/Proyectos/Mono/hegoburu/Hegoburu.Presentation.Desktop.Core/ModelList.cs" line="59" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

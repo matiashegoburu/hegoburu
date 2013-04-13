@@ -17,6 +17,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 
         TItem _item;
 
+        [DontNotifyPropertyChanged]
         public virtual TItem Item
         {
             get
@@ -56,8 +57,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 
             var modelProxy = new Proxy<TModel>()
 				.Target(model)
-            //.InterceptAllSetters()
-				.InterceptWhere(m => m.Name.StartsWith("set_") && m.Name != "set_Item")
+				.InterceptWhere(m => m.Name.StartsWith("set_") && !m.GetCustomAttributesData().Any(a => a.GetType().Equals(typeof(DontNotifyPropertyChangedAttribute))))
 				.OnInvoke(mi => {
                 var newValue = mi.Arguments.First();
                 var propertyName = mi.Method.Name.Substring(4);
@@ -89,7 +89,7 @@ namespace Hegoburu.Presentation.Desktop.Core
                 }
             }
             )
-				.InterceptWhere(m => m.Name.StartsWith("get_") && m.Name != "get_Item")
+				.InterceptWhere(m => m.Name.StartsWith("get_") && !m.GetCustomAttributesData().Any(a => a.GetType().Equals(typeof(DontNotifyPropertyChangedAttribute))))
 				.OnInvoke(mi => {
                 var propertyName = mi.Method.Name.Substring(4);
                 var targetItem = (mi.Target as TModel).Item;
