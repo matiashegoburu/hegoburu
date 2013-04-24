@@ -9,32 +9,32 @@ using System.Collections.Generic;
 
 namespace Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views
 {
-	[System.ComponentModel.ToolboxItem(true)]
-	public partial class MainWidgetView 
+    [System.ComponentModel.ToolboxItem(true)]
+    public partial class MainWidgetView 
 		: BaseGtkWidget<MainModel, object, MainWidgetController, MainWidgetView>
-	{
-		public MainWidgetView (MainModel model) 
+    {
+        public MainWidgetView(MainModel model) 
 			: base(model)
-		{
-			this.Build ();
+        {
+            this.Build();
 
-			var personaListModel = ModelManager.GetInstance ().Get<PersonaListModel, List<PersonaEntity>> ();
-			var personaListView = ViewManager.GetInstance ().Get<PersonaListModel, List<PersonaEntity>, PersonaListWidgetController, PersonaListWidgetView> (personaListModel);
-			hpaned1.Add1 (personaListView);
+            var personaListModel = ModelManager.Instance.Get<PersonaListModel, List<PersonaEntity>>();
+            var personaListView = ViewManager.Instance.Get<PersonaListModel, List<PersonaEntity>, PersonaListWidgetController, PersonaListWidgetView>(personaListModel);
+            hpaned1.Add1(personaListView);
 
-			personaListView.Controller.AgregarClicked += Controller.HandleAgregarClicked;
-			personaListView.Controller.EditarClicked += Controller.HandleEditarClicked;
-		}
+            personaListView.Controller.AgregarClicked += Controller.HandleAgregarClicked;
+            personaListView.Controller.EditarClicked += Controller.HandleEditarClicked;
+        }
 
-		protected override void HandlePropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
+        protected override void HandlePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
 
-		}
+        }
 
-		protected override void ModelChanged ()
-		{
+        protected override void ModelChanged()
+        {
 
-		}
-	}
+        }
+    }
 }
 

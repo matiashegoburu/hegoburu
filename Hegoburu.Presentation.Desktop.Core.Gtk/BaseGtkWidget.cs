@@ -55,7 +55,7 @@ public partial class BaseGtkWidget<TModel, TItem, TController, TView>
         Model.Dispose();
 
         ViewManager
-			.GetInstance()
+			.Instance
 			.Untrack<TModel, TItem, TController, TView>((TView)this);
 
         base.Dispose();

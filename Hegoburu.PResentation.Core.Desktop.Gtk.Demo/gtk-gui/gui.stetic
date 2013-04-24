@@ -6,9 +6,9 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="../../Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/bin/Debug/Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.dll" />
-    <widget-library name="../../Hegoburu.Presentation.Desktop.Core.Gtk/bin/Debug/Hegoburu.Presentation.Desktop.Core.Gtk.dll" />
-    <widget-library name="../bin/Debug/Hegoburu.PResentation.Core.Desktop.Gtk.Demo.exe" internal="true" />
+    <widget-library name="../../Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/bin/Release/Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.dll" />
+    <widget-library name="../../Hegoburu.Presentation.Desktop.Core.Gtk/bin/Release/Hegoburu.Presentation.Desktop.Core.Gtk.dll" />
+    <widget-library name="../bin/Release/Hegoburu.PResentation.Core.Desktop.Gtk.Demo.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
     <property name="MemberName" />

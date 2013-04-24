@@ -161,7 +161,7 @@ namespace Hegoburu.Presentation.Desktop.Core
 
         public virtual void Delete()
         {
-            ModelManager.GetInstance().Untrack<Model<TItem>, TItem>(this);
+            ModelManager.Instance.Untrack<Model<TItem>, TItem>(this);
 
             if (Deleting != null)
                 Deleting(this, EventArgs.Empty);

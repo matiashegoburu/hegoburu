@@ -1,10 +1,10 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Hegoburu.Presentation.Desktop.Core/Model.cs">
     <Files>
-      <File FileName="Hegoburu.Presentation.Desktop.Core/Model.cs" Line="202" Column="13" />
-      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelList.cs" Line="84" Column="17" />
-      <File FileName="Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI/Views/Persona/PersonaListWidgetView.cs" Line="53" Column="28" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/ModelManager.cs" Line="1" Column="1" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/Model.cs" Line="60" Column="1" />
+      <File FileName="Hegoburu.Presentation.Desktop.Core/DontNotifyPropertyChangedAttribute.cs" Line="7" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

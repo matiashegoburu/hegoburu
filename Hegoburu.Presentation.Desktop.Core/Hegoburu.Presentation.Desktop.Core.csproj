@@ -48,6 +48,8 @@
     <Compile Include="ViewManager.cs" />
     <Compile Include="ModelList.cs" />
     <Compile Include="DontNotifyPropertyChangedAttribute.cs" />
+    <Compile Include="IViewManager.cs" />
+    <Compile Include="IModelManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

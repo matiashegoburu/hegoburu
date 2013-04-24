@@ -9,18 +9,18 @@ using Hegoburu.Presentation.Core.Desktop.Gtk.Demo.UI.Views;
 
 public partial class MainWindow: Gtk.Window
 {	
-	public MainWindow (): base (Gtk.WindowType.Toplevel)
-	{
-		Build ();
-		var mainModel = ModelManager.GetInstance ().Get<MainModel, object> ();
-		var mainWidgetView = ViewManager.GetInstance ().Get<MainModel, object, MainWidgetController, MainWidgetView> (mainModel);
-		this.fixed3.Add (mainWidgetView);
-		this.ShowAll ();
-	}
+    public MainWindow(): base (Gtk.WindowType.Toplevel)
+    {
+        Build();
+        var mainModel = ModelManager.Instance.Get<MainModel, object>();
+        var mainWidgetView = ViewManager.Instance.Get<MainModel, object, MainWidgetController, MainWidgetView>(mainModel);
+        this.fixed3.Add(mainWidgetView);
+        this.ShowAll();
+    }
 	
-	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
-	{
-		Application.Quit ();
-		a.RetVal = true;
-	}
+    protected void OnDeleteEvent(object sender, DeleteEventArgs a)
+    {
+        Application.Quit();
+        a.RetVal = true;
+    }
 }
